@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import parse from './src/parsers.js';
+import diffGenerator from './src/diffGenerator.js';
 
 const program = new Command();
 
@@ -13,7 +14,8 @@ program
   .action((filepath1, filepath2) => {
     const data1 = parse(filepath1);
     const data2 = parse(filepath2);
-    console.log(data1, data2);
+    const diff = diffGenerator(data1, data2);
+    console.log(diff);
   });
 
 program.parse();

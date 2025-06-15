@@ -10,3 +10,5 @@ You can use both full and relative paths.
 ```bash
 gendiff file1.json file2.json
 ```
+
+[![asciicast](https://asciinema.org/a/lARuZRxPDGsR8M2v5IH7zcXpA.svg)](https://asciinema.org/a/lARuZRxPDGsR8M2v5IH7zcXpA)

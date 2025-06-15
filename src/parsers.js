@@ -1,7 +1,11 @@
 import fs from 'fs';
 import path from 'path';
 
-const getFullPath = (filepath) => path.resolve(process.cwd(), filepath);
+const getFullPath = (filepath) => {
+  return path.isAbsolute(filepath)
+    ? filepath
+    : path.resolve(process.cwd(), '__fixtures__', filepath);
+};
 
 const parse = (filepath) => {
   const fullPath = getFullPath(filepath);

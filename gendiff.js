@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-const { Command } = require('commander');
+import { Command } from 'commander';
+import parse from './src/parsers.js';
 
 const program = new Command();
 
@@ -9,10 +10,10 @@ program
   .version('0.0.1')
   .option('-f, --format <type>', 'output format')
   .arguments('<filepath1> <filepath2>')
-  .action((filepath1, filepath2, options) => {
-    console.log(`File 1: ${filepath1}`);
-    console.log(`File 2: ${filepath2}`);
-    console.log(`Format: ${options.format}`);
+  .action((filepath1, filepath2) => {
+    const data1 = parse(filepath1);
+    const data2 = parse(filepath2);
+    console.log(data1, data2);
   });
 
 program.parse();

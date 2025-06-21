@@ -8,6 +8,8 @@
 
 ## 📦 Example usage
 
+### 📄JSON
+
 To compare two flat JSON files, run the utility and pass the file paths as arguments.  
 You can use both full and relative paths.
 
@@ -18,6 +20,8 @@ gendiff file1.json file2.json
 [![asciicast](https://asciinema.org/a/lARuZRxPDGsR8M2v5IH7zcXpA.svg)](https://asciinema.org/a/lARuZRxPDGsR8M2v5IH7zcXpA)
 
 ---
+
+### ⚙️YML
 
 To compare two flat YAML files, run the utility and pass the YAML file paths as arguments.
 You can use both full and relative paths.

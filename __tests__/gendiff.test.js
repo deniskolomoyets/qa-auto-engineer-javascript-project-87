@@ -17,3 +17,11 @@ test('gendiff flat JSON', () => {
 
   expect(diffGenerator(file1, file2)).toBe(expected);
 });
+
+test('gendiff flat YAML', () => {
+  const file1 = parse(getFixturePath('file1.yml'));
+  const file2 = parse(getFixturePath('file2.yml'));
+  const expected = readFile('result.txt').trim();
+
+  expect(diffGenerator(file1, file2)).toBe(expected);
+});

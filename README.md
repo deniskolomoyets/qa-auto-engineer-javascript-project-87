@@ -33,3 +33,15 @@ gendiff file1.yml file2.yml
 [![asciicast](https://asciinema.org/a/5n33tNYHs4uURot0EWCUZUxPq.svg)](https://asciinema.org/a/5n33tNYHs4uURot0EWCUZUxPq)
 
 ---
+
+### 📜 Plain Format
+
+To display the differences in plain text format (suitable for logs or plain output), use the --format plain option:
+
+```bash
+gendiff --format plain file1.yml file2.yml
+```
+
+[![asciicast](https://asciinema.org/a/uZA1VH2qLbNdGu01kzlTQGAZF.svg)](https://asciinema.org/a/uZA1VH2qLbNdGu01kzlTQGAZF)
+
+---

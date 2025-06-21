@@ -17,8 +17,9 @@ gendiff file1.json file2.json
 
 [![asciicast](https://asciinema.org/a/lARuZRxPDGsR8M2v5IH7zcXpA.svg)](https://asciinema.org/a/lARuZRxPDGsR8M2v5IH7zcXpA)
 
-To compare two flat YAML files, run the utility and pass the YAML file paths as arguments.
+`---`
 
+To compare two flat YAML files, run the utility and pass the YAML file paths as arguments.
 You can use both full and relative paths.
 
 ```bash
@@ -26,3 +27,5 @@ gendiff file1.yml file2.yml
 ```
 
 [![asciicast](https://asciinema.org/a/5n33tNYHs4uURot0EWCUZUxPq.svg)](https://asciinema.org/a/5n33tNYHs4uURot0EWCUZUxPq)
+
+`---`

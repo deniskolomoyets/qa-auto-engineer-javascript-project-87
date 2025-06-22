@@ -1,3 +1,9 @@
+const formatValue = (val) => {
+  if (val === null) return null;
+  if (typeof val === 'boolean' || typeof val === 'number') return val;
+  return String(val);
+};
+
 const iter = (tree) => {
   const lines = tree.map((node) => {
     const {
@@ -10,13 +16,13 @@ const iter = (tree) => {
 
     switch (type) {
       case 'added':
-        return `  + ${key}: ${JSON.stringify(value)}`;
+        return `  + ${key}: ${formatValue(value)}`;
       case 'deleted':
-        return `  - ${key}: ${JSON.stringify(value)}`;
+        return `  - ${key}: ${formatValue(value)}`;
       case 'unchanged':
-        return `    ${key}: ${JSON.stringify(value)}`;
+        return `    ${key}: ${formatValue(value)}`;
       case 'changed':
-        return `  - ${key}: ${JSON.stringify(oldValue)}\n  + ${key}: ${JSON.stringify(newValue)}`;
+        return `  - ${key}: ${formatValue(oldValue)}\n  + ${key}: ${formatValue(newValue)}`;
       default:
         throw new Error(`Unknown type: '${type}'`);
     }

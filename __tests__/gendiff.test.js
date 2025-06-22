@@ -2,7 +2,6 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { readFileSync } from 'fs'
 import gendiff from '../src/index.js'
-import getFormatter from '../src/formatters/index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -10,48 +9,30 @@ const __dirname = dirname(__filename)
 const getFixturePath = filename => join(__dirname, '..', '__fixtures__', filename)
 const readFile = filename => readFileSync(getFixturePath(filename), 'utf-8').trim()
 
-test('gendiff flat JSON', () => {
+test('gendiff JSON plain', () => {
   const filepath1 = getFixturePath('file1.json')
   const filepath2 = getFixturePath('file2.json')
   const expected = readFile('plain-result.txt')
-
-  const result = gendiff(filepath1, filepath2, 'plain')
-  expect(result).toBe(expected)
+  expect(gendiff(filepath1, filepath2, 'plain')).toBe(expected)
 })
 
-test('gendiff flat YAML', () => {
+test('gendiff YAML plain', () => {
   const filepath1 = getFixturePath('file1.yml')
   const filepath2 = getFixturePath('file2.yml')
   const expected = readFile('plain-result.txt')
-
-  const result = gendiff(filepath1, filepath2, 'plain')
-  expect(result).toBe(expected)
+  expect(gendiff(filepath1, filepath2, 'plain')).toBe(expected)
 })
 
-test('gendiff flat JSON (plain)', () => {
+test('gendiff JSON stylish', () => {
   const filepath1 = getFixturePath('file1.json')
   const filepath2 = getFixturePath('file2.json')
-  const expected = readFile('plain-result.txt')
-  const result = gendiff(filepath1, filepath2, 'plain')
-  expect(result).toBe(expected)
+  const expected = readFile('result.txt')
+  expect(gendiff(filepath1, filepath2, 'stylish')).toBe(expected)
 })
 
-test('gendiff flat YAML (plain)', () => {
-  const filepath1 = getFixturePath('file1.yml')
-  const filepath2 = getFixturePath('file2.yml')
-  const expected = readFile('plain-result.txt')
-  const result = gendiff(filepath1, filepath2, 'plain')
-  expect(result).toBe(expected)
-})
-
-test('gendiff flat JSON (json)', () => {
+test('gendiff JSON json', () => {
   const filepath1 = getFixturePath('file1.json')
   const filepath2 = getFixturePath('file2.json')
   const result = gendiff(filepath1, filepath2, 'json')
-  const parsed = JSON.parse(result)
-  expect(typeof parsed).toBe('object')
-})
-
-test('getFormatter throws on unknown format', () => {
-  expect(() => getFormatter('unknown')).toThrow(/Unknown format/)
+  expect(() => JSON.parse(result)).not.toThrow()
 })

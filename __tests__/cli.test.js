@@ -11,29 +11,34 @@ const getFixturePath = filename => path.join(__dirname, '..', '__fixtures__', fi
 test('gendiff CLI: json output', () => {
   const filepath1 = getFixturePath('file1.json')
   const filepath2 = getFixturePath('file2.json')
-
   const command = `node ./gendiff.js "${filepath1}" "${filepath2}" --format json`
-  const result = execSync(command)
-
-  expect(result.toString()).toContain('{')
+  const result = execSync(command).toString()
+  expect(() => JSON.parse(result)).not.toThrow()
 })
 
 test('gendiff CLI: stylish output', () => {
   const filepath1 = getFixturePath('file1.json')
   const filepath2 = getFixturePath('file2.json')
   const command = `node ./gendiff.js "${filepath1}" "${filepath2}" --format stylish`
-  const result = execSync(command).toString()
-
+  const result = execSync(command).toString().trim()
   const expected = readFileSync(getFixturePath('result.txt'), 'utf-8').trim()
-  expect(result.trim()).toBe(expected)
+  expect(result).toBe(expected)
 })
 
 test('gendiff CLI: plain output', () => {
   const filepath1 = getFixturePath('file1.json')
   const filepath2 = getFixturePath('file2.json')
   const command = `node ./gendiff.js "${filepath1}" "${filepath2}" --format plain`
-  const result = execSync(command).toString()
-
+  const result = execSync(command).toString().trim()
   const expected = readFileSync(getFixturePath('plain-result.txt'), 'utf-8').trim()
-  expect(result.trim()).toBe(expected)
+  expect(result).toBe(expected)
+})
+
+test('gendiff CLI: stylish output with YAML', () => {
+  const filepath1 = getFixturePath('file1.yml')
+  const filepath2 = getFixturePath('file2.yml')
+  const command = `node ./gendiff.js "${filepath1}" "${filepath2}" --format stylish`
+  const result = execSync(command).toString().trim()
+  const expected = readFileSync(getFixturePath('result.txt'), 'utf-8').trim()
+  expect(result).toBe(expected)
 })

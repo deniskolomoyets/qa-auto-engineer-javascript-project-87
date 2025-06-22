@@ -1,18 +1,16 @@
-import globals from 'globals'
-import path from 'path'
-import { fileURLToPath } from 'url'
-import { FlatCompat } from '@eslint/eslintrc'
-import pluginJs from '@eslint/js'
-import importPlugin from 'eslint-plugin-import'
-import stylistic from '@stylistic/eslint-plugin' // Плагин стилистики
+import globals from 'globals';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { FlatCompat } from '@eslint/eslintrc';
+import importPlugin from 'eslint-plugin-import';
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: pluginJs.configs.recommended,
-})
+
+});
 
 export default [
   {
@@ -26,18 +24,9 @@ export default [
         sourceType: 'module',
       },
     },
-    plugins: {
-      import: importPlugin,
-      '@stylistic': stylistic,
-    },
+    plugins: { import: importPlugin },
     rules: {
       ...importPlugin.configs.recommended.rules,
-
-      // Стиль от Stylistic
-      '@stylistic/semi': ['error', 'never'],
-      '@stylistic/arrow-parens': ['error', 'always'],
-      '@stylistic/quote-props': ['error', 'as-needed'],
-      // можно добавить и другие, если хочешь
     },
   },
   ...compat.extends('airbnb-base'),
@@ -49,9 +38,6 @@ export default [
       'import/no-named-as-default-member': 'off',
       'no-console': 'off',
       'import/no-extraneous-dependencies': 'off',
-
-      // ❗️отключаем airbnb-переназначенное правило
-      semi: 'off',
     },
   },
-]
+];

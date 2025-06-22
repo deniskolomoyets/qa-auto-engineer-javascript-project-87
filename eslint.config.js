@@ -36,6 +36,7 @@ export default [
       // Стиль от Stylistic
       '@stylistic/semi': ['error', 'never'],
       '@stylistic/arrow-parens': ['error', 'always'],
+      '@stylistic/quote-props': ['error', 'as-needed'],
       // можно добавить и другие, если хочешь
     },
   },

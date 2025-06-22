@@ -45,3 +45,15 @@ gendiff --format plain file1.yml file2.yml
 [![asciicast](https://asciinema.org/a/uZA1VH2qLbNdGu01kzlTQGAZF.svg)](https://asciinema.org/a/uZA1VH2qLbNdGu01kzlTQGAZF)
 
 ---
+
+### 🧾 JSON Output
+
+To get machine-readable structured diff, use JSON format:
+
+```bash
+gendiff --format json file1.json file2.json
+```
+
+[![asciicast](https://asciinema.org/a/MgGySMVvL4LIppYVFcWkpsxAO.svg)](https://asciinema.org/a/MgGySMVvL4LIppYVFcWkpsxAO)
+
+---

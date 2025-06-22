@@ -17,7 +17,8 @@ const iter = (tree) => {
     switch (type) {
       case 'added':
         return `  + ${key}: ${formatValue(value)}`
-      case 'deleted':
+      case 'deleted': // старый вариант
+      case 'removed': // новый алиас
         return `  - ${key}: ${formatValue(value)}`
       case 'unchanged':
         return `    ${key}: ${formatValue(value)}`

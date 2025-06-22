@@ -21,3 +21,7 @@ program
   })
 
 program.parse()
+
+export function run(args = process.argv) {
+  program.parse(args)
+}

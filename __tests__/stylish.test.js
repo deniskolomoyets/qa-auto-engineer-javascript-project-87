@@ -19,6 +19,10 @@ test('stylish formatter', () => {
     '  + timeout: 20',
     '  + verbose: true',
   ].join('\n')
-
   expect(stylish(diffTree)).toBe(`{\n${expected}\n}`)
+})
+
+test('stylish: unknown type throws error', () => {
+  const tree = [{ key: 'bad', type: '???', value: 1 }]
+  expect(() => stylish(tree)).toThrow(/Unknown type/)
 })

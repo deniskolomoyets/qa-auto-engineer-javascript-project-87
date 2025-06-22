@@ -2,6 +2,7 @@ import { fileURLToPath } from 'url'
 import { dirname, join } from 'path'
 import { readFileSync } from 'fs'
 import gendiff from '../src/index.js'
+import getFormatter from '../src/formatters/index.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -49,4 +50,8 @@ test('gendiff flat JSON (json)', () => {
   const result = gendiff(filepath1, filepath2, 'json')
   const parsed = JSON.parse(result)
   expect(typeof parsed).toBe('object')
+})
+
+test('getFormatter throws on unknown format', () => {
+  expect(() => getFormatter('unknown')).toThrow(/Unknown format/)
 })
